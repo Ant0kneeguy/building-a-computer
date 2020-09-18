@@ -6,6 +6,7 @@
 #include "notGate.h"
 #include "andGate.h"
 #include "nandGate.h"
+#include "norGate.h"
 
 //test harness
 int main() {
@@ -49,6 +50,18 @@ int main() {
 		printf("NAND gate error");
 		return(-1);
 	}
+
+//testing NOR gates
+	norGate* no1 = norGate_new(t1, t1);
+	norGate* no2 = norGate_new(t2, t1);
+	norGate* no3 = norGate_new(t1, t2);
+	norGate* no4 = norGate_new(t2, t2);
+	if (norGate_output(no1) != 1 || norGate_output(no2) != 0 ||
+		norGate_output(no3) != 0 || norGate_output(no4) != 0) {
+		printf("NOR gate error");
+		return(-1);
+	}
+
 
 	printf("Tests succeeded!\n");
 
