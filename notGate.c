@@ -13,21 +13,14 @@ notGate *notGate_new(transistor *input) {
 		return n;
 }
 
+int notGate_input(notGate *n) {
+	return transistor_input2(n->t);
+}
 int notGate_output(notGate *n) {
-	return collector(n->t);
+	return transistor_output(n->t);
 }
 
 void notGate_print(notGate* n) {
-	printf("Input: %d\n", n->t->getBase(n->t));
+	printf("Input: %d\n", notGate_input(n));
 	printf("Output: %d\n", notGate_output(n));
 }
-
-
-
-// int main() {
-//
-// 	notGate *n1 = notGate_new(ONE);
-// 	notGate_print(n1);
-// 	printf("%d\n", notGate_output(n1));
-//
-// }

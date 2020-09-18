@@ -8,6 +8,7 @@ typedef struct _notGate {
 } notGate;
 
 notGate *notGate_new(transistor *input);
+int notGate_input(notGate *n);
 int notGate_output(notGate *n);
 void notGate_print(notGate* n);
 

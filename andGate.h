@@ -11,6 +11,9 @@ typedef struct _andGate {
 
 andGate *andGate_new(transistor *input1, transistor *input2);
 void andGate_print(andGate* a);
+
+int andGate_input1(andGate *a);
+int andGate_input2(andGate *a);
 int andGate_output(andGate *a);
 
 #endif

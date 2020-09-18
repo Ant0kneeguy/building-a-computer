@@ -11,18 +11,17 @@ andGate *andGate_new(transistor *input1, transistor *input2) {
 }
 
 void andGate_print(andGate* a) {
-	printf("Input 1: %d\n", a->t->getEmitter(a->t));
-	printf("Input 2: %d\n", a->n->t->getBase(a->n->t));
-	printf("Output: %d\n", collector(a->t));
+	printf("Input 1: %d\n", andGate_input1(a));
+	printf("Input 2: %d\n", andGate_input2(a));
+	printf("Output: %d\n", andGate_output(a));
 }
 
+int andGate_input1(andGate *a) {
+	transistor_input1(a->t);
+}
+int andGate_input2(andGate *a) {
+	notGate_input(a->n);
+}
 int andGate_output(andGate *a) {
-	collector(a->t);
+	transistor_output(a->t);
 }
-
-// int main() {
-// 	andGate *a = andGate_new(ONE, ONE);
-// 	//andGate_print(a);
-// //AAH segfault
-// 	//printf("%d/n", andGate_output(a));
-// }

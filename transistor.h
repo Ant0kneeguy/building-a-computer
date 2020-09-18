@@ -18,7 +18,12 @@ int ground(transistor *t);
 transistor* transistor_new(void *emitter_connection, void *base_connection);
 int link_to_emitter(transistor* this);
 int link_to_base(transistor* this);
+
 int collector(transistor* target);
 void transistor_print(transistor* t);
+
+int transistor_input1(transistor *t);
+int transistor_input2(transistor *t);
+int transistor_output(transistor *t);
 
 #endif

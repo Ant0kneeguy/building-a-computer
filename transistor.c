@@ -148,12 +148,17 @@ int collector(transistor* target) {
 };
 
 void transistor_print(transistor* t) {
-	printf("Emitter: %d\n", t->getEmitter(t));
-	printf("Base: %d\n", t->getBase(t));
-	printf("Collector: %d\n", collector(t));
+	printf("Emitter: %d\n", transistor_input1(t));
+	printf("Base: %d\n", transistor_input2(t));
+	printf("Collector: %d\n", transistor_output(t));
 }
 
-// int main() {
-//
-// 	return 0;
-// }
+int transistor_input1(transistor *t) {
+	return t->getEmitter(t);
+}
+int transistor_input2(transistor *t) {
+	return t->getBase(t);
+}
+int transistor_output(transistor *t) {
+	return collector(t);
+}
