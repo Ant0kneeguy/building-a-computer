@@ -44,8 +44,8 @@ int main() {
 	nandGate *na2 = nandGate_new(t1, t2);
 	nandGate *na3 = nandGate_new(t2, t1);
 	nandGate *na4 = nandGate_new(t2, t2);
-	if (nandGate_output(na1) != 1 || nandGate_output(na2) != 0 ||
-		nandGate_output(na3) != 0 || nandGate_output(na4) != 0) {
+	if (nandGate_output(na1) != 1 || nandGate_output(na2) != 1 ||
+		nandGate_output(na3) != 1 || nandGate_output(na4) != 0) {
 		printf("NAND gate error");
 		return(-1);
 	}

@@ -6,9 +6,8 @@
 nandGate *nandGate_new(transistor *input1, transistor *input2) {
 	nandGate *na = malloc(sizeof(nandGate));
 
-	na->n1 = notGate_new(input1);
-	na->n2 = notGate_new(input2);
-	na->a = andGate_new(na->n1->t, na->n2->t);
+	na->a = andGate_new(input1, input2);
+	na->n = notGate_new(na->a->t);
 
 	return na;
 }
@@ -20,11 +19,11 @@ void nandGate_print(nandGate *na) {
 }
 
 int nandGate_input1(nandGate *na) {
-	return notGate_input(na->n1);
+	return andGate_input1(na->a);
 }
 int nandGate_input2(nandGate *na) {
-	return notGate_input(na->n2);
+	return andGate_input2(na->a);
 }
 int nandGate_output(nandGate *na) {
-	return andGate_output(na->a);
+	return notGate_output(na->n);
 }

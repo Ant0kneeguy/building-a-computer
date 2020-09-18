@@ -5,9 +5,8 @@
 #include "andGate.h"
 
 typedef struct _nandGate {
-	notGate *n1;
-	notGate *n2;
 	andGate *a;
+	notGate *n;
 } nandGate;
 
 nandGate *nandGate_new(transistor *input1, transistor *input2);
