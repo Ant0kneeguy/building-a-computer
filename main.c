@@ -85,7 +85,7 @@ int main() {
 	xorGate *xor4 = xorGate_new(ONE, ONE);
 	if (xorGate_output(xor1) != 0 || xorGate_output(xor2) != 1 ||
 		xorGate_output(xor3) != 1 || xorGate_output(xor4) != 0) {
-		printf("OR gate error");
+		printf("XOR gate error");
 		return(-1);
 	}
 
