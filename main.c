@@ -2,13 +2,8 @@
 #include <stdlib.h>
 #include <stddef.h>
 
-#include "transistor.h"
-#include "notGate.h"
-#include "andGate.h"
-#include "nandGate.h"
-#include "norGate.h"
-#include "orGate.h"
-#include "xorGate.h"
+#include "libtransistor/transistor.h"
+#include "libgate/libgate.h"
 
 //test harness
 int main() {
