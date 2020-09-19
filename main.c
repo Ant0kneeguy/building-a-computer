@@ -7,6 +7,7 @@
 #include "andGate.h"
 #include "nandGate.h"
 #include "norGate.h"
+#include "orGate.h"
 
 //test harness
 int main() {
@@ -62,6 +63,16 @@ int main() {
 		return(-1);
 	}
 
+//testing OR gates
+	orGate *o1 = orGate_new(t1, t1);
+	orGate *o2 = orGate_new(t1, t2);
+	orGate *o3 = orGate_new(t2, t1);
+	orGate *o4 = orGate_new(t2, t2);
+	if (orGate_output(o1) != 0 || orGate_output(o2) != 1 ||
+		orGate_output(o3) != 1 || orGate_output(o4) != 1) {
+		printf("OR gate error");
+		return(-1);
+	}
 
 	printf("Tests succeeded!\n");
 
