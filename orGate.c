@@ -3,26 +3,26 @@
 #include "orGate.h"
 
 orGate *orGate_new(transistor *input1, transistor *input2) {
-	orGate *o = malloc(sizeof(orGate));
+	orGate *or = malloc(sizeof(orGate));
 
-	o->no = norGate_new(input1, input2);
-	o->n = notGate_new(o->no->a->t);
+	or->nor = norGate_new(input1, input2);
+	or->not = notGate_new(or->nor->and->t);
 
-	return o;
+	return or;
 }
 
-void orGate_print(orGate *o) {
-	printf("Input1: %d\n", orGate_input1(o));
-	printf("Input2: %d\n", orGate_input2(o));
-	printf("Output: %d\n", orGate_output(o));
+void orGate_print(orGate *or) {
+	printf("Input1: %d\n", orGate_input1(or));
+	printf("Input2: %d\n", orGate_input2(or));
+	printf("Output: %d\n", orGate_output(or));
 }
 
-int orGate_input1(orGate *o) {
-	return norGate_input1(o->no);
+int orGate_input1(orGate *or) {
+	return norGate_input1(or->nor);
 }
-int orGate_input2(orGate *o) {
-	return norGate_input2(o->no);
+int orGate_input2(orGate *or) {
+	return norGate_input2(or->nor);
 }
-int orGate_output(orGate *o) {
-	return  notGate_output(o->n);
+int orGate_output(orGate *or) {
+	return  notGate_output(or->not);
 }

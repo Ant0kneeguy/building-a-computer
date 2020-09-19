@@ -8,6 +8,7 @@
 #include "nandGate.h"
 #include "norGate.h"
 #include "orGate.h"
+#include "xorGate.h"
 
 //test harness
 int main() {
@@ -31,48 +32,51 @@ int main() {
 	}
 
 //testing AND gates
-	andGate *a1 = andGate_new(t1, t1);
-	andGate *a2 = andGate_new(t1, t2);
-	andGate *a3 = andGate_new(t2, t1);
-	andGate *a4 = andGate_new(t2, t2);
-	if (andGate_output(a1) != 0 || andGate_output(a2) != 0 ||
-		andGate_output(a3) != 0 || andGate_output(a4) != 1) {
+	andGate *and1 = andGate_new(t1, t1);
+	andGate *and2 = andGate_new(t1, t2);
+	andGate *and3 = andGate_new(t2, t1);
+	andGate *and4 = andGate_new(t2, t2);
+	if (andGate_output(and1) != 0 || andGate_output(and2) != 0 ||
+		andGate_output(and3) != 0 || andGate_output(and4) != 1) {
 		printf("AND gate error");
 		return(-1);
 	}
 
 //testing NAND gates
-	nandGate *na1 = nandGate_new(t1, t1);
-	nandGate *na2 = nandGate_new(t1, t2);
-	nandGate *na3 = nandGate_new(t2, t1);
-	nandGate *na4 = nandGate_new(t2, t2);
-	if (nandGate_output(na1) != 1 || nandGate_output(na2) != 1 ||
-		nandGate_output(na3) != 1 || nandGate_output(na4) != 0) {
+	nandGate *nand1 = nandGate_new(t1, t1);
+	nandGate *nand2 = nandGate_new(t1, t2);
+	nandGate *nand3 = nandGate_new(t2, t1);
+	nandGate *nand4 = nandGate_new(t2, t2);
+	if (nandGate_output(nand1) != 1 || nandGate_output(nand2) != 1 ||
+		nandGate_output(nand3) != 1 || nandGate_output(nand4) != 0) {
 		printf("NAND gate error");
 		return(-1);
 	}
 
 //testing NOR gates
-	norGate* no1 = norGate_new(t1, t1);
-	norGate* no2 = norGate_new(t2, t1);
-	norGate* no3 = norGate_new(t1, t2);
-	norGate* no4 = norGate_new(t2, t2);
-	if (norGate_output(no1) != 1 || norGate_output(no2) != 0 ||
-		norGate_output(no3) != 0 || norGate_output(no4) != 0) {
+	norGate* nor1 = norGate_new(t1, t1);
+	norGate* nor2 = norGate_new(t2, t1);
+	norGate* nor3 = norGate_new(t1, t2);
+	norGate* nor4 = norGate_new(t2, t2);
+	if (norGate_output(nor1) != 1 || norGate_output(nor2) != 0 ||
+		norGate_output(nor3) != 0 || norGate_output(nor4) != 0) {
 		printf("NOR gate error");
 		return(-1);
 	}
 
 //testing OR gates
-	orGate *o1 = orGate_new(t1, t1);
-	orGate *o2 = orGate_new(t1, t2);
-	orGate *o3 = orGate_new(t2, t1);
-	orGate *o4 = orGate_new(t2, t2);
-	if (orGate_output(o1) != 0 || orGate_output(o2) != 1 ||
-		orGate_output(o3) != 1 || orGate_output(o4) != 1) {
+	orGate *or1 = orGate_new(t1, t1);
+	orGate *or2 = orGate_new(t1, t2);
+	orGate *or3 = orGate_new(t2, t1);
+	orGate *or4 = orGate_new(t2, t2);
+	if (orGate_output(or1) != 0 || orGate_output(or2) != 1 ||
+		orGate_output(or3) != 1 || orGate_output(or4) != 1) {
 		printf("OR gate error");
 		return(-1);
 	}
+
+//testing XOR gates
+	xorGate xo;
 
 	printf("Tests succeeded!\n");
 

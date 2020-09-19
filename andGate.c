@@ -4,24 +4,24 @@
 #include "andGate.h"
 
 andGate *andGate_new(transistor *input1, transistor *input2) {
-	andGate *a = malloc(sizeof(andGate));
-	a->n = notGate_new(input2);
-	a->t = transistor_new(input1, a->n->t);
-	return a;
+	andGate *and = malloc(sizeof(andGate));
+	and->not = notGate_new(input2);
+	and->t = transistor_new(input1, and->not->t);
+	return and;
 }
 
-void andGate_print(andGate* a) {
-	printf("Input 1: %d\n", andGate_input1(a));
-	printf("Input 2: %d\n", andGate_input2(a));
-	printf("Output: %d\n", andGate_output(a));
+void andGate_print(andGate* and) {
+	printf("Input 1: %d\not", andGate_input1(and));
+	printf("Input 2: %d\not", andGate_input2(and));
+	printf("Output: %d\not", andGate_output(and));
 }
 
-int andGate_input1(andGate *a) {
-	transistor_input1(a->t);
+int andGate_input1(andGate *and) {
+	transistor_input1(and->t);
 }
-int andGate_input2(andGate *a) {
-	notGate_input(a->n);
+int andGate_input2(andGate *and) {
+	notGate_input(and->not);
 }
-int andGate_output(andGate *a) {
-	transistor_output(a->t);
+int andGate_output(andGate *and) {
+	transistor_output(and->t);
 }

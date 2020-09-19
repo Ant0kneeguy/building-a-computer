@@ -4,23 +4,23 @@
 #include "notGate.h"
 
 notGate *notGate_new(transistor *input) {
-		notGate *n = malloc(sizeof(notGate));
-		if (n==NULL) {
+		notGate *not = malloc(sizeof(notGate));
+		if (not==NULL) {
 			printf("ERROR: malloc failed!");
 			exit(-1);
 		}
-		n->t = transistor_new(vcc, input);
-		return n;
+		not->t = transistor_new(vcc, input);
+		return not;
 }
 
-int notGate_input(notGate *n) {
-	return transistor_input2(n->t);
+int notGate_input(notGate *not) {
+	return transistor_input2(not->t);
 }
-int notGate_output(notGate *n) {
-	return transistor_output(n->t);
+int notGate_output(notGate *not) {
+	return transistor_output(not->t);
 }
 
-void notGate_print(notGate* n) {
-	printf("Input: %d\n", notGate_input(n));
-	printf("Output: %d\n", notGate_output(n));
+void notGate_print(notGate* not) {
+	printf("Input: %d\not", notGate_input(not));
+	printf("Output: %d\not", notGate_output(not));
 }
