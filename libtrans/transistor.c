@@ -1,21 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "transistor.h"
-
-#define DEBUG 0
+#include "../libconst/libconst.h"
 /**
 A transistor has 3 fields, 2 input (emitter and base) and 1 output (collector).
 The collector output is equal to the emitter input if the base is set to 0.
 If instead the base is 1, the output is always 0.
 **/
-
-int vcc(transistor *t) {
-	return 1;
-}
-
-int ground(transistor *t) {
-	return 0;
-}
 
 
 							//*** INPUTS ***//
@@ -57,40 +48,40 @@ transistor* transistor_new(void *emitter_connection, void *base_connection) {
 //if t1 is vcc then we want getEmitter to point to vcc
 	if (emitter_connection == vcc) {
 		t->emitter_transistor = NULL;
-		t->getEmitter = vcc;
-		if (DEBUG == 1) {
+		t->getEmitter = (int(*)(transistor*))vcc;
+		if (debug == 1) {
 			printf("Debug: emitter connected to a vcc\n");
 		}
 	} else if (emitter_connection == ground) {
 		t->emitter_transistor = NULL;
-		t->getEmitter = ground;
-		if (DEBUG == 1) {
+		t->getEmitter = (int(*)(transistor*))ground;
+		if (debug == 1) {
 			printf("Debug: emitter connected to ground\n");
 		}
 	} else {
 		t->emitter_transistor = (transistor*)emitter_connection;
 		t->getEmitter = link_to_emitter;
-		if (DEBUG == 1) {
+		if (debug == 1) {
 			printf("Debug: emitter connected to a transistor\n");
 		}
 	}
 
 	if (base_connection == vcc) {
 		t->base_transistor = NULL;
-		t->getBase = vcc;
-		if (DEBUG == 1) {
+		t->getBase = (int(*)(transistor*))vcc;
+		if (debug == 1) {
 			printf("Debug: base connected to vcc\n");
 		}
 	} else if (base_connection == ground) {
 		t->base_transistor = NULL;
-		t->getBase = ground;
-		if (DEBUG == 1) {
+		t->getBase = (int(*)(transistor*))ground;
+		if (debug == 1) {
 			printf("Debug: emitter connected to a ground\n");
 		}
 	} else {
 		t->base_transistor = (transistor*)base_connection;
 		t->getBase = link_to_base;
-		if (DEBUG == 1) {
+		if (debug == 1) {
 			printf("Debug: base connected to a transistor\n");
 		}
 	}
@@ -135,12 +126,12 @@ int link_to_base(transistor* this) {
 //collector
 int collector(transistor* target) {
 	if (target->getBase(target) == 0) {
-		if (DEBUG == 1) {
+		if (debug == 1) {
 			printf("Debug: target->getBase = 0\n");
 		}
 		return target->getEmitter(target);
 	} else {
-		if (DEBUG == 1) {
+		if (debug == 1) {
 			printf("target->getBase = 1\n");
 		}
 		return 0;

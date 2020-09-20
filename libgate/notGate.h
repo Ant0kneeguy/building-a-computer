@@ -1,7 +1,7 @@
 #ifndef NOTGATE
 #define NOTGATE
 
-#include "../libtransistor/libtransistor.h"
+#include "../libtrans/libtrans.h"
 
 typedef struct _notGate {
 	transistor *t;

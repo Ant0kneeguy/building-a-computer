@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "wire.h"
-#include "../libtransistor/libtransistor.h"
+#include "../libtrans/libtrans.h"
+#include "../libconst/libconst.h"
 
 wire *wire_new(void *input) {
 	wire *w = malloc(sizeof(wire));

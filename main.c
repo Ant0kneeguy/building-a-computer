@@ -2,8 +2,10 @@
 #include <stdlib.h>
 #include <stddef.h>
 
-#include "libtransistor/libtransistor.h"
+#include "libtrans/libtrans.h"
 #include "libgate/libgate.h"
+#include "libconst/libconst.h"
+#include "libwire/libwire.h"
 
 //test harness
 int main() {

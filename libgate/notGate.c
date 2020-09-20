@@ -2,6 +2,7 @@
 #include <stdio.h>
 
 #include "notGate.h"
+#include "../libconst/libconst.h"
 
 notGate *notGate_new(transistor *input) {
 		notGate *not = malloc(sizeof(notGate));
