@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stddef.h>
 
-#include "libtransistor/transistor.h"
+#include "libtransistor/libtransistor.h"
 #include "libgate/libgate.h"
 
 //test harness
