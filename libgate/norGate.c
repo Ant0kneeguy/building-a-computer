@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include "norGate.h"
 
-norGate *norGate_new(transistor *input1, transistor *input2) {
+norGate *norGate_new(void *input1, void *input2) {
 	norGate *nor = malloc(sizeof(norGate));
 
 	nor->not1 = notGate_new(input1);

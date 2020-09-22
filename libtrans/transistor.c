@@ -38,7 +38,6 @@ If instead the base is 1, the output is always 0.
 //to ints or transistors
 
 transistor* transistor_new(void *emitter_connection, void *base_connection) {
-
 	transistor* t = malloc(sizeof(transistor));
 	if (t==NULL) {
 		printf("ERROR: malloc failed!");

@@ -3,7 +3,7 @@
 
 #include "andGate.h"
 
-andGate *andGate_new(transistor *input1, transistor *input2) {
+andGate *andGate_new(void *input1, void *input2) {
 	andGate *and = malloc(sizeof(andGate));
 	and->not = notGate_new(input2);
 	and->t = transistor_new(input1, and->not->t);

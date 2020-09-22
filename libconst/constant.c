@@ -9,3 +9,6 @@ int ground(void *t) {
 int vcc(void *t) {
 	return 1;
 }
+
+int(*zero)(void *t) = ground;
+int(*one)(void *t) = vcc;

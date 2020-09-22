@@ -3,7 +3,7 @@
 #include "nandGate.h"
 
 
-nandGate *nandGate_new(transistor *input1, transistor *input2) {
+nandGate *nandGate_new(void *input1, void *input2) {
 	nandGate *nand = malloc(sizeof(nandGate));
 
 	nand->and = andGate_new(input1, input2);

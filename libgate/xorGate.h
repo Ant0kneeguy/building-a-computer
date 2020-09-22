@@ -13,7 +13,7 @@ typedef struct _xorGate {
 	orGate *or;
 } xorGate;
 
-xorGate *xorGate_new(transistor *input1, transistor* input2);
+xorGate *xorGate_new(void *input1, void *input2);
 void xorGate_print(xorGate *xor);
 
 int xorGate_input1(xorGate *xor);

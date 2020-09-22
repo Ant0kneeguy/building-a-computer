@@ -4,7 +4,7 @@
 #include "notGate.h"
 #include "../libconst/libconst.h"
 
-notGate *notGate_new(transistor *input) {
+notGate *notGate_new(void *input) {
 		notGate *not = malloc(sizeof(notGate));
 		if (not==NULL) {
 			printf("ERROR: malloc failed!");

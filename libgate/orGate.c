@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include "orGate.h"
 
-orGate *orGate_new(transistor *input1, transistor *input2) {
+orGate *orGate_new(void *input1, void *input2) {
 	orGate *or = malloc(sizeof(orGate));
 
 	or->nor = norGate_new(input1, input2);

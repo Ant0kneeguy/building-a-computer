@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include "xorGate.h"
 
-xorGate *xorGate_new(transistor *input1, transistor* input2) {
+xorGate *xorGate_new(void *input1, void *input2) {
 	xorGate *xor = malloc(sizeof(xorGate));
 
 	xor->not1 = notGate_new(input1);
