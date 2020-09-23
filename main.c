@@ -8,7 +8,7 @@
 #include "libwire/libwire.h"
 
 //test harness
-int main() {
+int main(int argc, int* argv) {
 //testing transistors
 	transistor *t1 = transistor_new(ground, ground);
 	transistor *t2 = transistor_new(vcc, ground);
@@ -90,8 +90,6 @@ int main() {
 }
 
 //todo
-	//move defs of one and zero to libconst
 	//try connecting a transistor to a wire?
 	//or a wire to a source?
 	//change link to emitter to link from emitter
-	//*** work out how to use make **
