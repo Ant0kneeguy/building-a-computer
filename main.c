@@ -84,12 +84,23 @@ int main(int argc, int* argv) {
 		return(-1);
 	}
 
+//testing wires
+	wire *w1 = wire_new(ground);
+	//wire_print(w1);
+
+	wire *w2 = wire_new(vcc);
+	//wire_print(w2);
+
+	wire *w3 = wire_new(t1); //t1 = (gnd, gnd)
+	wire_print(w3);
+	t1->emitter_transistor = NULL;
+	t1->getEmitter = (int(*)(transistor*))vcc; //t1 = (vcc, gnd)
+	wire_print(w3);
+
 	printf("Tests succeeded!\n");
 
 	return 0;
 }
 
 //todo
-	//try connecting a transistor to a wire?
-	//or a wire to a source?
-	//change link to emitter to link from emitter
+	//add getBase & getEmitter methods to wire?

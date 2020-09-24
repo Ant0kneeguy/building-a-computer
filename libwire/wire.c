@@ -6,12 +6,15 @@
 
 wire *wire_new(void *input) {
 	wire *w = malloc(sizeof(wire));
-	if (input == NULL || input == ground) {
+	if (input == ground) {
+		w->input_transistor = NULL;
 		w->state = 0;
 	} else if(input == vcc) {
+		w->input_transistor = NULL;
 		w->state = 1;
 	} else {
 		//assumes it is connected to a transistor pointer
+		w->input_transistor = input;
 		w->state = transistor_output(input);
 	}
 	return w;
@@ -21,10 +24,11 @@ void wire_print(wire* w) {
 	printf("State: %d\n", wire_getState(w));
 }
 
-void wire_setState(wire *w, int state) {
-	w->state = state;
-}
-
 int wire_getState(wire *w) {
-	return w->state;
+	if (w->input_transistor == NULL) {
+		return w->state;
+	} else {
+		w->state = collector(w->input_transistor);
+		return w->state;
+	}
 }
