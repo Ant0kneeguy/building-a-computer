@@ -22,6 +22,6 @@ int notGate_output(notGate *not) {
 }
 
 void notGate_print(notGate* not) {
-	printf("Input: %d\not", notGate_input(not));
-	printf("Output: %d\not", notGate_output(not));
+	printf("Input: %d\n", notGate_input(not));
+	printf("Output: %d\n", notGate_output(not));
 }
