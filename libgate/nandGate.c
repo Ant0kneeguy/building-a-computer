@@ -3,11 +3,12 @@
 #include "nandGate.h"
 
 
-nandGate *nandGate_new(void *input1, void *input2) {
+nandGate *nandGate_new(void *input1, void *type_of_input1, void *input2,
+						void *type_of_input2) {
 	nandGate *nand = malloc(sizeof(nandGate));
 
-	nand->and = andGate_new(input1, input2);
-	nand->not = notGate_new(nand->and->t);
+	nand->and = andGate_new(input1, type_of_input1, input2, type_of_input2);
+	nand->not = notGate_new(nand->and->t, is_transistor);
 
 	return nand;
 }

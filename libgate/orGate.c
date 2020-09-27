@@ -2,11 +2,12 @@
 #include <stdio.h>
 #include "orGate.h"
 
-orGate *orGate_new(void *input1, void *input2) {
+orGate *orGate_new(void *input1, void *type_of_input1, void *input2,
+					void *type_of_input2) {
 	orGate *or = malloc(sizeof(orGate));
 
-	or->nor = norGate_new(input1, input2);
-	or->not = notGate_new(or->nor->and->t);
+	or->nor = norGate_new(input1, type_of_input1, input2, type_of_input2);
+	or->not = notGate_new(or->nor->and->t, is_transistor);
 
 	return or;
 }

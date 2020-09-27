@@ -1,6 +1,8 @@
 #ifndef CONSTANT
 #define CONSTANT
 
+#include <stddef.h>
+
 extern int debug;
 extern int andGate_debug;
 
@@ -12,5 +14,7 @@ int vcc(void*);
 extern int(*zero)(void*);
 extern int(*one)(void*);
 
+extern void *is_transistor;
+extern void *is_wire;
 
 #endif

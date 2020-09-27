@@ -9,7 +9,8 @@ typedef struct _orGate {
 	notGate *not;
 } orGate;
 
-orGate *orGate_new(void *input1, void *input2);
+orGate *orGate_new(void *input1, void *type_of_input1, void *input2,
+					void *type_of_input2);
 void orGate_print(orGate *or);
 int orGate_input1(orGate *or);
 int orGate_input2(orGate *or);

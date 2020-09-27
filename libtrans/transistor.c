@@ -25,7 +25,10 @@ If instead the base is 1, the output is always 0.
 
 //To create a new transistor we must specify what the values of the emitter and
 //base inputs will be. These can be ground, vcc, other transistors or wires.
-transistor* transistor_new(void *emitter, void *base) {
+
+//we could create a void* to represent 'transistor' and 'wire' in libconst...
+transistor* transistor_new(void *emitter, void *type_of_emitter, void *base,
+							void *type_of_base) {
 
 	transistor* t = malloc(sizeof(transistor));
 	if (t==NULL) {
@@ -46,14 +49,14 @@ transistor* transistor_new(void *emitter, void *base) {
 		if (debug == 1) {
 			printf("Debug: emitter connected to ground\n");
 		}
-	} else if (sizeof(emitter) == sizeof(transistor)) {
+	} else if (type_of_emitter == is_transistor) {
 		//emitter must be a transistor
 		t->emitter_connection = emitter;
 		t->getEmitter = (int(*)(void*))transistor_at_emitter;
 		if (debug == 1) {
 			printf("Debug: emitter connected to a transistor\n");
 		}
-	} else if (sizeof(emitter) == sizeof(wire)) {
+	} else if (type_of_emitter == is_wire) {
 		//emitter must be a wire
 		t->emitter_connection = emitter;
 		t->getEmitter = (int(*)(void*))transistor_at_emitter;
@@ -62,9 +65,6 @@ transistor* transistor_new(void *emitter, void *base) {
 		}
 	} else {
 		printf("ERROR: unable to determine type of emitter!\n");
-		printf("Size of emitter: %d\n", sizeof(emitter));
-		printf("Size of transistor: %d\n", sizeof(transistor));
-		printf("Size of wire: %d\n", sizeof(wire));
 		exit(-1);
 	}
 
@@ -80,13 +80,13 @@ transistor* transistor_new(void *emitter, void *base) {
 		if (debug == 1) {
 			printf("Debug: base connected to ground\n");
 		}
-	} else if (sizeof(base) == sizeof(transistor)) {
+	} else if (type_of_base == is_transistor) {
 		t->base_connection = base;
 		t->getBase = (int(*)(void*))transistor_at_base;
 		if (debug == 1) {
 			printf("Debug: base connected to a transistor\n");
 		}
-	} else if (sizeof(base) == sizeof(wire)) {
+	} else if (type_of_base == is_wire) {
 		//base must be a wire
 		t->base_connection = base;
 		t->getBase = (int(*)(void*))wire_at_base;
@@ -95,9 +95,7 @@ transistor* transistor_new(void *emitter, void *base) {
 		}
 	} else {
 		printf("ERROR: unable to determine type of base!\n");
-		printf("Size of base: %d\n", sizeof(base));
-		printf("Size of transistor: %d\n", sizeof(transistor));
-		printf("Size of wire: %d\n", sizeof(wire));
+		exit(-1);
 	}
 
 	return t;

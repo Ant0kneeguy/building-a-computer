@@ -9,7 +9,8 @@ typedef struct _nandGate {
 	notGate *not;
 } nandGate;
 
-nandGate *nandGate_new(void *input1, void *input2);
+nandGate *nandGate_new(void *input1, void *type_of_input1, void *input2,
+						void *type_of_input2);
 void nandGate_print(nandGate *nand);
 
 int nandGate_input1(nandGate *nand);

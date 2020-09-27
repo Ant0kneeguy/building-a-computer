@@ -4,13 +4,14 @@
 #include "andGate.h"
 #include "../libconst/libconst.h"
 
-andGate *andGate_new(void *input1, void *input2) {
+andGate *andGate_new(void *input1, void *type_of_input1, void *input2,
+					void *type_of_input2) {
 	andGate *and = malloc(sizeof(andGate));
 	if (andGate_debug) {
 		printf("andGate_new:\n");
 		printf("Creating notGate for input 2:\n");
 	}
-	and->not = notGate_new(input2);
+	and->not = notGate_new(input2, type_of_input2);
 	if (andGate_debug == 1) {
 		printf("Created notGate:\n");
 		notGate_print(and->not);
@@ -19,7 +20,7 @@ andGate *andGate_new(void *input1, void *input2) {
 		//void *test = and->not->t;
 		//printf("Size of void pointer: %d\n", sizeof(test));
 	}
-	and->t = transistor_new(input1, and->not->t);
+	and->t = transistor_new(input1, type_of_input1, and->not->t, is_transistor);
 	if (andGate_debug == 1) {
 		printf("andGate_new:\n");
 		printf("Created transistor:\n");

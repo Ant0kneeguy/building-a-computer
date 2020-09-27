@@ -2,14 +2,18 @@
 #include <stdio.h>
 #include "xorGate.h"
 
-xorGate *xorGate_new(void *input1, void *input2) {
+xorGate *xorGate_new(void *input1, void *type_of_input1, void *input2,
+						void *type_of_input2) {
 	xorGate *xor = malloc(sizeof(xorGate));
 
-	xor->not1 = notGate_new(input1);
-	xor->not2 = notGate_new(input2);
-	xor->and1 = andGate_new(input1, xor->not2->t);
-	xor->and2 = andGate_new(input2, xor->not1->t);
-	xor->or = orGate_new(xor->and1->t, xor->and2->t);
+	xor->not1 = notGate_new(input1, type_of_input1);
+	xor->not2 = notGate_new(input2, type_of_input2);
+	xor->and1 = andGate_new(input1, type_of_input1, xor->not2->t,
+							is_transistor);
+	xor->and2 = andGate_new(input2, type_of_input2, xor->not1->t,
+							is_transistor);
+	xor->or = orGate_new(xor->and1->t, is_transistor, xor->and2->t,
+							is_transistor);
 
 	return xor;
 }
