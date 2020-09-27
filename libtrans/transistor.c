@@ -154,3 +154,5 @@ int transistor_input2(transistor *t) {
 int transistor_output(transistor* t) {
 	return collector(t);
 }
+
+//could possible modify getEmitter and getBase to not take in void pointers...
