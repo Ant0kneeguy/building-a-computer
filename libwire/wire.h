@@ -10,7 +10,7 @@ typedef struct _wire {
 } wire;
 
 wire *wire_new(void *input);
-void wire_print(wire* w);
+void wire_print(wire *w);
 
 void wire_update(wire *w);
 int wire_output(wire *w);

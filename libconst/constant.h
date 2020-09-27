@@ -3,7 +3,7 @@
 
 #include <stddef.h>
 
-extern int debug;
+extern int transistor_debug;
 extern int andGate_debug;
 
 //these functions need a void pointer argument because getBase and getEmitter
