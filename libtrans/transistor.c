@@ -105,21 +105,21 @@ transistor* transistor_new(void *emitter, void *type_of_emitter, void *base,
 							//*** OUTPUT ***//
 
 int transistor_at_emitter(transistor *this) {
-	// transistor *t = (transistor*)this;
 	return transistor_output(this->emitter_connection);
 };
 
 int transistor_at_base(transistor *this) {
-	// transistor *t = (transistor*)this;
 	return transistor_output(this->base_connection);
 };
 
 int wire_at_emitter(transistor *this) {
-	// wire *w = (wire*)this;
+	//(causes a seg fault)
+	//wire_update((wire*)this->emitter_connection);
 	return wire_output((wire*)this->emitter_connection);
 }
 
 int wire_at_base(transistor *this) {
+	//wire_update((wire*)this->base_connection);
 	return wire_output((wire*)this->base_connection);
 }
 

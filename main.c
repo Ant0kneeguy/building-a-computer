@@ -149,13 +149,12 @@ int main(int argc, int* argv) {
 
 	//SUCCESS
 	//trying to connect a NOT gate to itself with a wire
-	wire *w4 = wire_new(ground);
+	wire *w4 = wire_new(NULL);
 	notGate *n3 = notGate_new(w4, is_wire);
-	w4->input = n3->t;
-	w4->state = notGate_output(n3);
+	wire_connect(w4, n3->t);
 	printf("Wire: %d\n", wire_output(w4));
 	printf("NOT gate: %d\n", notGate_output(n3));
-	wire_update(w4);
+	//wire_update(w4);
 	printf("Wire: %d\n", wire_output(w4));
 	printf("NOT gate: %d\n", notGate_output(n3));
 	return 0;

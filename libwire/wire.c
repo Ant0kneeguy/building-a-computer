@@ -4,6 +4,15 @@
 
 wire *wire_new(void *input) {
 	wire *w = malloc(sizeof(wire));
+	if (input == NULL) {
+		wire_connect(w, ground);
+	} else {
+		wire_connect(w, input);
+	}
+	return w;
+}
+
+void wire_connect(wire *w, void *input) {
 	w->input = input;
 	if (input == ground) {
 		w->state = 0;
@@ -13,7 +22,6 @@ wire *wire_new(void *input) {
 		//assumes it is connected to a transistor pointer
 		w->state = transistor_output(input);
 	}
-	return w;
 }
 
 void wire_print(wire* w) {
