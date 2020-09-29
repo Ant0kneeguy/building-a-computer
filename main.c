@@ -88,76 +88,9 @@ int main(int argc, int* argv) {
 
 //testing wires
 	wire *w1 = wire_new(ground);
-	// wire_print(w1);
-	wire *w2 = wire_new(vcc);
-	// wire_print(w2);
 
-//can we connect a transistor to a wire?
-	transistor *t5 = transistor_new(w1, is_wire, w1, is_wire);
-	transistor *t6 = transistor_new(w1, is_wire, w2, is_wire);
-	transistor *t7 = transistor_new(w2, is_wire, w1, is_wire);
-	transistor *t8 = transistor_new(w2, is_wire, w2, is_wire);
-	if (transistor_output(t5) != 0 || transistor_output(t6) != 0 ||
-		transistor_output(t7) != 1 || transistor_output(t8) != 0) {
-			printf("Transistor error (wires)!");
-			exit(-1);
-	}
-
-//how about a mixture?
-	transistor *t9 = transistor_new(w2, is_wire, t5, is_transistor);
-	transistor *t10 = transistor_new(w2, is_wire, t7, is_transistor);
-	transistor *t11 = transistor_new(t7, is_transistor, w1, is_wire);
-	transistor *t12 = transistor_new(t7, is_transistor, w2, is_wire);
-	if (transistor_output(t9) != 1 || transistor_output(t10) != 0 ||
-		transistor_output(t11) != 1 || transistor_output(t12) != 0) {
-			printf("Transistor error (wires and transistors)!");
-			exit(-1);
-	}
-
-//and mix in the consts
-	transistor *t13 = transistor_new(vcc, NULL, w1, is_wire);
-	transistor *t14 = transistor_new(vcc, NULL, w2, is_wire);
-	transistor *t15 = transistor_new(w2, is_wire, ground, NULL);
-	transistor *t16 = transistor_new(w2, is_wire, vcc, NULL);
-	transistor *t17 = transistor_new(vcc, NULL, t5, is_transistor);
-	transistor *t18 = transistor_new(vcc, NULL, t7, is_transistor);
-	transistor *t19 = transistor_new(t7, is_transistor, ground, NULL);
-	transistor *t20 = transistor_new(t7, is_transistor, vcc, NULL);
-	if (transistor_output(t13) != 1 || transistor_output(t14) != 0 ||
-		transistor_output(t15) != 1 || transistor_output(t16) != 0) {
-			printf("Transistor error (consts and wires)!");
-			exit(-1);
-	}
-	if (transistor_output(t17) != 1 || transistor_output(t18) != 0 ||
-		transistor_output(t19) != 1 || transistor_output(t20) != 0) {
-			printf("Transistor error (consts and transistors)!");
-			exit(-1);
-	}
 
 	printf("Tests succeeded!\n");
 
-	//trying to connect a transistor to itself with a wire
-	wire *w3 = wire_new(vcc);
-	transistor *t21 = transistor_new(w3, is_wire, ground, NULL);
-	w3->input = t21;
-	w3->state = collector(t21);
-	//transistor_print(t21);
-	//wire_print(w3);
 
-	//printf("%d\n", transistor_output(t21));
-	//printf("%d\n", wire_output(w3));
-
-	//SUCCESS
-	//trying to connect a NOT gate to itself with a wire
-	wire *w4 = wire_new(NULL);
-	notGate *n3 = notGate_new(w4, is_wire);
-	wire_connect(w4, n3->t);
-	printf("Wire: %d\n", wire_output(w4));
-	printf("NOT gate: %d\n", notGate_output(n3));
-	//wire_update(w4);
-	printf("Wire: %d\n", wire_output(w4));
-	printf("NOT gate: %d\n", notGate_output(n3));
-	return 0;
-
-	//SUCCESS
 }
