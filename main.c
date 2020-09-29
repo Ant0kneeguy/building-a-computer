@@ -92,5 +92,5 @@ int main(int argc, int* argv) {
 
 	printf("Tests succeeded!\n");
 
-
+	return 0;
 }
