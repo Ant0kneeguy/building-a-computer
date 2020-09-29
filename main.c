@@ -8,7 +8,7 @@
 #include "libwire/libwire.h"
 
 //test harness
-int main(int argc, int* argv) {
+int main() {
 
 //testing transistors
 	transistor *t1 = transistor_new(ground, NULL, ground, NULL);
