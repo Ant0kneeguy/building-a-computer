@@ -40,29 +40,17 @@ transistor* transistor_new(void *emitter, void *type_of_emitter, void *base,
 	if (emitter == vcc) {
 		t->emitter_connection = NULL;
 		t->getEmitter = vcc;
-		if (transistor_debug == 1) {
-			printf("Debug: emitter connected to vcc\n");
-		}
 	} else if (emitter == ground) {
 		t->emitter_connection = NULL;
 		t->getEmitter = ground;
-		if (transistor_debug == 1) {
-			printf("Debug: emitter connected to ground\n");
-		}
 	} else if (type_of_emitter == is_transistor) {
 		//emitter must be a transistor
 		t->emitter_connection = emitter;
 		t->getEmitter = (int(*)(void*))transistor_at_emitter;
-		if (transistor_debug == 1) {
-			printf("Debug: emitter connected to a transistor\n");
-		}
 	} else if (type_of_emitter == is_wire) {
 		//emitter must be a wire
 		t->emitter_connection = emitter;
 		t->getEmitter = (int(*)(void*))wire_at_emitter;
-		if (transistor_debug == 1) {
-			printf("Debug: emitter connected to a wire\n");
-		}
 	} else {
 		printf("ERROR: unable to determine type of emitter!\n");
 		exit(-1);
@@ -71,28 +59,16 @@ transistor* transistor_new(void *emitter, void *type_of_emitter, void *base,
 	if (base == vcc) {
 		t->base_connection = NULL;
 		t->getBase = vcc;
-		if (transistor_debug == 1) {
-			printf("Debug: base connected to vcc\n");
-		}
 	} else if (base == ground) {
 		t->base_connection = NULL;
 		t->getBase = ground;
-		if (transistor_debug == 1) {
-			printf("Debug: base connected to ground\n");
-		}
 	} else if (type_of_base == is_transistor) {
 		t->base_connection = base;
 		t->getBase = (int(*)(void*))transistor_at_base;
-		if (transistor_debug == 1) {
-			printf("Debug: base connected to a transistor\n");
-		}
 	} else if (type_of_base == is_wire) {
 		//base must be a wire
 		t->base_connection = base;
 		t->getBase = (int(*)(void*))wire_at_base;
-		if (transistor_debug == 1) {
-			printf("Debug: base connected to a wire\n");
-		}
 	} else {
 		printf("ERROR: unable to determine type of base!\n");
 		exit(-1);
@@ -127,14 +103,8 @@ int wire_at_base(transistor *this) {
 //because getEmitter and getBase may not point to transistors.
 int collector(transistor* this) {
 	if (this->getBase(this) == 0) {
-		if (transistor_debug == 1) {
-			printf("Debug: this->getBase = 0\n");
-		}
 		return this->getEmitter(this);
 	} else {
-		if (transistor_debug == 1) {
-			printf("Debug: this->getBase = 1\n");
-		}
 		return 0;
 	}
 };

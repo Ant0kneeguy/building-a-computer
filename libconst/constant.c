@@ -1,8 +1,5 @@
 #include "constant.h"
 
-int transistor_debug = 0;
-int andGate_debug = 0;
-
 int ground(void* uselessArg) {
 	return 0;
 }

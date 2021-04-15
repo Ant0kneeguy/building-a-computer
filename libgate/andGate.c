@@ -7,24 +7,8 @@
 andGate *andGate_new(void *input1, void *type_of_input1, void *input2,
 					void *type_of_input2) {
 	andGate *and = malloc(sizeof(andGate));
-	if (andGate_debug) {
-		printf("andGate_new:\n");
-		printf("Creating notGate for input 2:\n");
-	}
 	and->not = notGate_new(input2, type_of_input2);
-	if (andGate_debug == 1) {
-		printf("Created notGate:\n");
-		notGate_print(and->not);
-		printf("Creating transistor for input 1:\n");
-		//printf("Size of and->not->t: %d\n", sizeof(*(and->not->t)));
-		//void *test = and->not->t;
-		//printf("Size of void pointer: %d\n", sizeof(test));
-	}
 	and->t = transistor_new(input1, type_of_input1, and->not->t, is_transistor);
-	if (andGate_debug == 1) {
-		printf("andGate_new:\n");
-		printf("Created transistor:\n");
-		transistor_print(and->t);
 	}
 	return and;
 }
