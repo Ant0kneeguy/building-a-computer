@@ -2,10 +2,10 @@
 #include <stdlib.h>
 #include <stddef.h>
 
-#include "libtrans/libtrans.h"
-#include "libgate/libgate.h"
-#include "libconst/libconst.h"
-#include "libwire/libwire.h"
+#include "transistor/libtrans.h"
+#include "logic_gates/libgate.h"
+#include "constants/libconst.h"
+#include "wire/libwire.h"
 
 //test harness
 int main(int argc, char** argv) {
