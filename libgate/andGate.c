@@ -20,11 +20,11 @@ void andGate_print(andGate* and) {
 }
 
 int andGate_input1(andGate *and) {
-	transistor_input1(and->t);
+	return transistor_input1(and->t);
 }
 int andGate_input2(andGate *and) {
-	notGate_input(and->not);
+	return notGate_input(and->not);
 }
 int andGate_output(andGate *and) {
-	transistor_output(and->t);
+	return transistor_output(and->t);
 }
