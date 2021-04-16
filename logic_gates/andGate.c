@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 #include "andGate.h"
-#include "../libconst/libconst.h"
+#include "../constants/libconst.h"
 
 andGate *andGate_new(void *input1, void *input2) {
 	andGate *and = malloc(sizeof(andGate));

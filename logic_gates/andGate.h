@@ -1,7 +1,7 @@
 #ifndef ANDGATE
 #define ANDGATE
 
-#include "../libtrans/transistor.h"
+#include "../transistor/transistor.h"
 #include "notGate.h"
 
 typedef struct _andGate {

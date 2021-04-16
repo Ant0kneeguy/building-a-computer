@@ -1,8 +1,8 @@
 #ifndef WIRE
 #define WIRE
 
-#include "../libtrans/libtrans.h"
-#include "../libconst/libconst.h"
+#include "../transistor/libtrans.h"
+#include "../constants/libconst.h"
 
 typedef struct _wire {
 	void *input;

@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 #include "notGate.h"
-#include "../libconst/libconst.h"
+#include "../constants/libconst.h"
 
 notGate *notGate_new(void *input) {
 		notGate *not = malloc(sizeof(notGate));

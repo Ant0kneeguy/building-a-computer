@@ -1,8 +1,8 @@
 #ifndef TRANSISTOR
 #define TRANSISTOR
 
-#include "../libconst/libconst.h"
-#include "../libwire/libwire.h"
+#include "../constants/libconst.h"
+#include "../wire/libwire.h"
 
 //ideally, right, the transistor shouldn't care whether it's linked to
 //another transistor or a wire.
