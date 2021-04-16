@@ -10,8 +10,7 @@ typedef struct _norGate {
 	andGate *and;
 } norGate;
 
-norGate *norGate_new(void *input1, void *type_of_input1, void *input2,
-						void *type_of_input2);
+norGate *norGate_new(void *input1, void *input2);
 void norGate_print(norGate *nor);
 
 int norGate_input1(norGate *nor);

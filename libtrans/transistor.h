@@ -19,8 +19,7 @@ typedef struct _transistor {
 
 } transistor;
 
-transistor* transistor_new(void *emitter, void *type_of_emitter, void *base,
-	void *type_of_base);
+transistor* transistor_new(void *emitter, void *base);
 int transistor_at_emitter(transistor *t);
 int transistor_at_base(transistor *t);
 int wire_at_emitter(transistor *t);

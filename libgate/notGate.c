@@ -4,13 +4,13 @@
 #include "notGate.h"
 #include "../libconst/libconst.h"
 
-notGate *notGate_new(void *input, void *type_of_input) {
+notGate *notGate_new(void *input) {
 		notGate *not = malloc(sizeof(notGate));
 		if (not==NULL) {
 			printf("ERROR: malloc failed!");
 			exit(-1);
 		}
-		not->t = transistor_new(vcc, NULL, input, type_of_input);
+		not->t = transistor_new(vcc, input);
 		return not;
 }
 

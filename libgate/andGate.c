@@ -4,15 +4,15 @@
 #include "andGate.h"
 #include "../libconst/libconst.h"
 
-andGate *andGate_new(void *input1, void *type_of_input1, void *input2,
-					void *type_of_input2) {
+andGate *andGate_new(void *input1, void *input2) {
 	andGate *and = malloc(sizeof(andGate));
-	and->not = notGate_new(input2, type_of_input2);
-	and->t = transistor_new(input1, type_of_input1, and->not->t, is_transistor);
 	if (and==NULL) {
 		printf("ERROR: malloc failed!");
 		exit(-1);
 	}
+	and->not = notGate_new(input2);
+	and->t = transistor_new(input1, and->not->t);
+
 	return and;
 }
 

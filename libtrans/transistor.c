@@ -27,8 +27,7 @@ If instead the base is 1, the output is always 0.
 //base inputs will be. These can be ground, vcc, other transistors or wires.
 
 //we could create a void* to represent 'transistor' and 'wire' in libconst...
-transistor* transistor_new(void *emitter, void *type_of_emitter, void *base,
-							void *type_of_base) {
+transistor* transistor_new(void *emitter, void *base) {
 
 	transistor* t = malloc(sizeof(transistor));
 	if (t==NULL) {
@@ -36,19 +35,20 @@ transistor* transistor_new(void *emitter, void *type_of_emitter, void *base,
 		exit(-1);
 	}
 
-//if t1 is vcc then we want getEmitter to point to vcc
+	//if emitter is connected to vcc
 	if (emitter == vcc) {
 		t->emitter_connection = NULL;
 		t->getEmitter = vcc;
+	//if emitter is connected to ground
 	} else if (emitter == ground) {
 		t->emitter_connection = NULL;
 		t->getEmitter = ground;
-	} else if (type_of_emitter == is_transistor) {
-		//emitter must be a transistor
+	//if emitter is connected to a transistor
+	} else if (sizeof(*emitter) == sizeof(transistor)) {
 		t->emitter_connection = emitter;
 		t->getEmitter = (int(*)(void*))transistor_at_emitter;
-	} else if (type_of_emitter == is_wire) {
-		//emitter must be a wire
+	//if emitter is connected to a wire
+	} else if (sizeof(*emitter) == sizeof(wire)) {
 		t->emitter_connection = emitter;
 		t->getEmitter = (int(*)(void*))wire_at_emitter;
 	} else {
@@ -56,21 +56,28 @@ transistor* transistor_new(void *emitter, void *type_of_emitter, void *base,
 		exit(-1);
 	}
 
+	//if base is connected to vcc
 	if (base == vcc) {
 		t->base_connection = NULL;
 		t->getBase = vcc;
+	//if base is connected to ground
 	} else if (base == ground) {
 		t->base_connection = NULL;
 		t->getBase = ground;
-	} else if (type_of_base == is_transistor) {
+	//if base is connected to a transistor
+	} else if (sizeof(*base) == sizeof(transistor)) {
 		t->base_connection = base;
 		t->getBase = (int(*)(void*))transistor_at_base;
-	} else if (type_of_base == is_wire) {
-		//base must be a wire
+	//if base is connected to a wire
+	} else if (sizeof(*base) == sizeof(wire)) {
 		t->base_connection = base;
 		t->getBase = (int(*)(void*))wire_at_base;
 	} else {
 		printf("ERROR: unable to determine type of base!\n");
+		printf("Size of base: %lu\n", sizeof(*base));
+		printf("Size of transistor: %lu\n", sizeof(transistor));
+		printf("Size of wire: %lu\n", sizeof(wire));
+		printf("Size of const: %lu\n", sizeof(ground));
 		exit(-1);
 	}
 

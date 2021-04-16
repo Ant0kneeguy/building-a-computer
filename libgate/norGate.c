@@ -2,14 +2,12 @@
 #include <stdio.h>
 #include "norGate.h"
 
-norGate *norGate_new(void *input1, void *type_of_input1, void *input2,
-						void *type_of_input2) {
+norGate *norGate_new(void *input1, void *input2) {
 	norGate *nor = malloc(sizeof(norGate));
 
-	nor->not1 = notGate_new(input1, type_of_input1);
-	nor->not2 = notGate_new(input2, type_of_input2);
-	nor->and = andGate_new(nor->not1->t, is_transistor, nor->not2->t,
-							is_transistor);
+	nor->not1 = notGate_new(input1);
+	nor->not2 = notGate_new(input2);
+	nor->and = andGate_new(nor->not1->t, nor->not2->t);
 
 	return nor;
 }

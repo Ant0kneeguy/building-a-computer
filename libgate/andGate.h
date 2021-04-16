@@ -9,8 +9,7 @@ typedef struct _andGate {
 	notGate *not;
 } andGate;
 
-andGate *andGate_new(void *input1, void *type_of_input1, void *input2,
-					void *type_of_input2);
+andGate *andGate_new(void *input1, void *input2);
 void andGate_print(andGate* and);
 
 int andGate_input1(andGate *and);
