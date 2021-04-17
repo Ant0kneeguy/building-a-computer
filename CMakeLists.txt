@@ -19,4 +19,7 @@ add_library(gate STATIC logic_gates/notGate.c logic_gates/andGate.c
 			logic_gates/xorGate.c)
 target_include_directories(gate PUBLIC logic_gates)
 
-target_link_libraries(main PUBLIC const wire trans gate)
+add_library(debugging STATIC debugging/stacktrace.c)
+target_include_directories(debugging PUBLIC debugging)
+
+target_link_libraries(main PUBLIC const wire trans gate debugging)

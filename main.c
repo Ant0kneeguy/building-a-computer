@@ -6,6 +6,7 @@
 #include "logic_gates/libgate.h"
 #include "constants/libconst.h"
 #include "wire/libwire.h"
+#include "debugging/stacktrace.h"
 
 //test harness
 int main(int argc, char** argv) {
