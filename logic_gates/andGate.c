@@ -3,8 +3,11 @@
 
 #include "andGate.h"
 #include "../constants/libconst.h"
+#include "../debugging/stacktrace.h"
 
 andGate *andGate_new(void *input1, void *input2) {
+	stacktrace_add();
+
 	andGate *and = malloc(sizeof(andGate));
 	if (and==NULL) {
 		printf("ERROR: malloc failed!");
@@ -12,7 +15,8 @@ andGate *andGate_new(void *input1, void *input2) {
 	}
 	and->not = notGate_new(input2);
 	and->t = transistor_new(input1, and->not->t);
-
+	
+	stacktrace_remove();
 	return and;
 }
 

@@ -8,4 +8,5 @@ void stacktrace_add();
 void stacktrace_remove();
 void stacktrace_print();
 
+char* getFilename(char* filename);
 #endif

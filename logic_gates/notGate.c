@@ -3,15 +3,20 @@
 
 #include "notGate.h"
 #include "../constants/libconst.h"
+#include "../debugging/stacktrace.h"
 
 notGate *notGate_new(void *input) {
-		notGate *not = malloc(sizeof(notGate));
-		if (not==NULL) {
-			printf("ERROR: malloc failed!");
-			exit(-1);
-		}
-		not->t = transistor_new(vcc, input);
-		return not;
+	stacktrace_add();
+
+	notGate *not = malloc(sizeof(notGate));
+	if (not==NULL) {
+		printf("ERROR: malloc failed!");
+		exit(-1);
+	}
+	not->t = transistor_new(vcc, input);
+
+	stacktrace_remove();
+	return not;
 }
 
 int notGate_input(notGate *not) {

@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "nandGate.h"
+#include "../debugging/stacktrace.h"
 
 
 nandGate *nandGate_new(void *input1, void *input2) {
@@ -9,6 +10,7 @@ nandGate *nandGate_new(void *input1, void *input2) {
 	nand->and = andGate_new(input1, input2);
 	nand->not = notGate_new(nand->and->t);
 
+	stacktrace_remove();
 	return nand;
 }
 

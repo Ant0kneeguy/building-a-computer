@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "transistor.h"
+#include "../debugging/stacktrace.h"
 
 
 /**
@@ -28,6 +29,7 @@ If instead the base is 1, the output is always 0.
 
 //we could create a void* to represent 'transistor' and 'wire' in libconst...
 transistor* transistor_new(void *emitter, void *base) {
+	stacktrace_add();
 
 	transistor* t = malloc(sizeof(transistor));
 	if (t==NULL) {
@@ -81,6 +83,7 @@ transistor* transistor_new(void *emitter, void *base) {
 		exit(-1);
 	}
 
+	stacktrace_remove();
 	return t;
 }
 
